@@ -8,8 +8,8 @@
     <div class="py-12 px-3">
         <div class="w-full mx-auto sm:px-6 lg:px-0">
         <div class="relative overflow-x-auto">
-            <table class="w-full text-sm text-left text-gray-100 dark:text-gray-100">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-black uppercase bg-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">Number</th>
                     <th scope="col" class="px-6 py-3">Caller</th>
@@ -20,7 +20,6 @@
                     <th scope="col" class="px-6 py-3">Category</th>
                     <th scope="col" class="px-6 py-3">Priority</th>
                     <th scope="col" class="px-6 py-3">Short Description</th>
-{{--                    <th scope="col" class="px-6 py-3">Description</th>--}}
                     <th scope="col" class="px-6 py-3">Incident State</th>
                     <th scope="col" class="px-6 py-3">Action</th>
                     @if(Auth::user()->role === 1)
@@ -29,8 +28,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($incidents as $incident)
-                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                @foreach ($incidents as $index => $incident)
+                    @php
+                        $rowClass = $index % 2 == 0 ? 'bg-white' : 'bg-gray-200';
+                    @endphp
+                    <tr class="{{ $rowClass }} border-b text-black">
                         <td class="px-1 py-2 w-fit">{{ $incident->number }}</td>
                         <td class="px-1 py-2">{{ $incident->caller }}</td>
                         <td class="px-1 py-2">{{ $incident->opened }}</td>
