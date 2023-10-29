@@ -46,10 +46,21 @@ class IncidentRequestController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $lastIncident = IncidentRequest::orderBy('id', 'desc')->first();
+
+        // Extract the number and increment it
+        $lastNumber = $lastIncident ? intval(substr($lastIncident->number, 4)) : 0;
+        $currentNumber = $lastNumber + 1;
+
+        // Format the new incident number
+        $formattedNumber = 'INC.' . str_pad($currentNumber, 4, '0', STR_PAD_LEFT);
+
+        // Create the new incident
         Auth::user()->incident()->create(array_merge([
-            'number' => Random::generate(10),
-            'caller' => Auth::user()
+            'number' => $formattedNumber,
+            'caller' => Auth::user()->name,
         ], $request->all()));
+
         return redirect(route('incidents.index'));
     }
 
@@ -64,9 +75,10 @@ class IncidentRequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(IncidentRequest $incidentRequest)
+    public function edit(IncidentRequest $incident)
     {
-        //
+
+        return view('incidents.edit', compact('incident'));
     }
 
     /**
@@ -74,7 +86,8 @@ class IncidentRequestController extends Controller
      */
     public function update(Request $request, IncidentRequest $incidentRequest)
     {
-
+        $incidentRequest->update($request->all());
+        return redirect()->route('incidents.index');
     }
 
     /**
@@ -94,7 +107,17 @@ class IncidentRequestController extends Controller
 
     public function status(IncidentRequest $incident, Request $request)
     {
-        $incident->update(['status' => $request->status]);
+        $status = '';
+        if ($incident->incident_state === 'Pending') {
+            $status = 'In Progress';
+        }
+        elseif ($incident->incident_state === 'In Progress'){
+            $status = 'Resolved';
+        }
+        else {
+            null;
+        }
+        $incident->update(['incident_state' => $status]);
         return redirect()->route('incidents.index');
     }
 }

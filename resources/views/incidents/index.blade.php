@@ -36,7 +36,7 @@
                         <td class="px-1 py-2 w-fit">{{ $incident->number }}</td>
                         <td class="px-1 py-2">{{ $incident->caller }}</td>
                         <td class="px-1 py-2">{{ $incident->opened }}</td>
-                        <td class="px-1 py-2">{{ $incident->user->name }}</td>
+                        <td class="px-1 py-2">{{ $incident->opened_by }}</td>
                         <td class="px-1 py-2">{{ $incident->location }}</td>
                         <td class="px-1 py-2">{{ $incident->impacted_item }}</td>
                         <td class="px-1 py-2">{{ $incident->category }}</td>
@@ -55,10 +55,23 @@
                                     <button class="bg-red-600 p-2 rounded-md text-white" type="submit">Delete</button>
                                 </form>
                             @endif
-                            @if(Auth::user()->role === 2)
+                            @if(Auth::user()->role === 3)
+                                <form action="{{route('incidents.edit', ['incident' => $incident->id])}}" method="get">
+                                    @csrf
+                                    <button class="bg-green-600 p-2 rounded-md text-white" type="submit">Edit</button>
+                                </form>
+                            @endif
+                            @if(Auth::user()->role === 2 && $incident->incident_state != 'Resolved')
                                 <form action="{{route('incidents.status', ['incident' => $incident->id])}}" method="post">
                                     @csrf
-                                    <button class="bg-red-600 p-2 rounded-md text-white" type="submit">Assign</button>
+                                    @method('PATCH')
+                                    <button class="rounded-md p-3 text-white @if($incident->incident_state === 'Pending')bg-orange-600 @else bg-green-600 @endif" type="submit">
+                                        @if($incident->incident_state === 'Pending')
+                                            Set as In progress
+                                        @elseif($incident->incident_state === 'In Progress')
+                                            Set as Resolved
+                                        @endif
+                                    </button>
                                 </form>
                             @endif
                         </td>

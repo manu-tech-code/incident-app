@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/incidents', IncidentRequestController::class);
     Route::post('incidents/{incident}', [IncidentRequestController::class, 'assign'])->name('incidents.assign');
-    Route::post('incidents/status/{incident}', [IncidentRequestController::class, 'status'])->name('incidents.status');
+    Route::patch('incidents/status/{incident}', [IncidentRequestController::class, 'status'])->name('incidents.status');
     Route::get('/add-user', [\App\Http\Controllers\AdminController::class, 'index'])->name('adduser.index');
     Route::post('/add-user', [\App\Http\Controllers\AdminController::class, 'adduser'])->name('adduser.create');
 });

@@ -49,4 +49,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(IncidentRequest::class);
     }
+
+    public static function generateAndIncrementNumber()
+    {
+        $lastRecord = self::orderBy('id', 'desc')->first();
+        $currentNumber = $lastRecord ? $lastRecord->number + 1 : 1;
+
+        $formattedNumber = 'INC.' . str_pad($currentNumber, 4, '0', STR_PAD_LEFT);
+
+        $newRecord = new self();
+        $newRecord->number = $currentNumber;
+        $newRecord->save();
+
+        return $formattedNumber;
+    }
 }

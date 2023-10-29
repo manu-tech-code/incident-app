@@ -19,6 +19,22 @@
                         <x-nav-link :href="route('adduser.create')" :active="request()->routeIs('adduser.index')">
                             {{ __('Add User') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('incidents.create')" :active="request()->routeIs('incidents.create')">
+                            {{ __('Create Request') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('incidents.index')" :active="request()->routeIs('incidents.index')">
+                            {{ __('All Incidents') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('adduser.create')" :active="request()->routeIs('adduser.index')">
+                            {{ __('Post') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('adduser.create')" :active="request()->routeIs('adduser.index')">
+                            {{ __('Report') }}
+                        </x-nav-link>
                    @endif
                 </div>
             </div>

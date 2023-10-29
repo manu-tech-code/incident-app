@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('incident_requests', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
+            $table->string('number');
             $table->string('caller');
             $table->dateTime('opened');
             $table->string('opened_by');

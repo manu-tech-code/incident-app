@@ -24,7 +24,7 @@ class IncidentRequestFactory extends Factory
             'location' => $this->faker->address,
             'impacted_item' => $this->faker->word,
             'category' => $this->faker->word,
-            'priority' => $this->faker->word,
+            'priority' => fake()->randomElement(['High', 'Medium', 'Low']),
             'short_description' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'incident_state' => fake()->randomElement(['Pending', 'In Progress', 'Done']),

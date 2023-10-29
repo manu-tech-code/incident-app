@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Create Incident Requests') }}
+            {{ __('Edit Incident Requests') }}
         </h2>
     </x-slot>
 
@@ -12,13 +12,13 @@
                 <!-- Additional Fields from Database Table -->
                 <div class="mt-4">
                     <x-input-label for="opened" :value="__('Opened')" />
-                    <x-text-input type="date" id="opened" class="block mt-1 w-full" name="opened" :value="old('opened')" required />
+                    <x-text-input type="date" id="opened" class="block mt-1 w-full" name="opened" :value="$incident->opened" required />
                     <x-input-error :messages="$errors->get('opened')" class="mt-2" />
                 </div>
 
                 <div class="mt-4">
                     <x-input-label for="opened_by" :value="__('Opened By')" />
-                    <x-text-input id="opened_by" class="block mt-1 w-full" type="text" name="opened_by" :value="old('opened_by')" required />
+                    <x-text-input id="opened_by" class="block mt-1 w-full" type="text" name="opened_by" :value="$incident->opened_by" required />
                     <x-input-error :messages="$errors->get('opened_by')" class="mt-2" />
                 </div>
 
@@ -27,31 +27,31 @@
                 <!-- Category (Select Field) -->
                 <div class="mt-4">
                     <x-input-label for="location" :value="__('Location')" />
-                    <x-text-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location')" required />
+                    <x-text-input id="location" class="block mt-1 w-full" type="text" name="location" :value="$incident->location" required />
                     <x-input-error :messages="$errors->get('location')" class="mt-2" />
                 </div>
 
-{{--                <div class="mt-4">--}}
-{{--                    <x-input-label for="incident_state" :value="__('Incident State')" />--}}
-{{--                    <x-text-input id="incident_state" class="block mt-1 w-full" type="text" name="incident_state" :value="old('incident_state')" required />--}}
-{{--                    <x-input-error :messages="$errors->get('incident_state')" class="mt-2" />--}}
-{{--                </div>--}}
-{{--                @if(Auth::user()->role === 1)--}}
-{{--                    <div class="mt-4">--}}
-{{--                        <x-input-label for="logged_for" :value="__('Logged For')" />--}}
-{{--                        <select name="logged_for" class="block mt-1 w-full" id="logged_for">--}}
-{{--                            <option selected disabled>Select IT Personnel</option>--}}
-{{--                            @foreach($ITPersonnel as $personnel)--}}
-{{--                                <option value="{{$personnel->name}}">{{$personnel->name}}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                        <x-input-error :messages="$errors->get('logged_for')" class="mt-2" />--}}
-{{--                    </div>--}}
-{{--                @endif--}}
+                {{--                <div class="mt-4">--}}
+                {{--                    <x-input-label for="incident_state" :value="__('Incident State')" />--}}
+                {{--                    <x-text-input id="incident_state" class="block mt-1 w-full" type="text" name="incident_state" :value="old('incident_state')" required />--}}
+                {{--                    <x-input-error :messages="$errors->get('incident_state')" class="mt-2" />--}}
+                {{--                </div>--}}
+                {{--                @if(Auth::user()->role === 1)--}}
+                {{--                    <div class="mt-4">--}}
+                {{--                        <x-input-label for="logged_for" :value="__('Logged For')" />--}}
+                {{--                        <select name="logged_for" class="block mt-1 w-full" id="logged_for">--}}
+                {{--                            <option selected disabled>Select IT Personnel</option>--}}
+                {{--                            @foreach($ITPersonnel as $personnel)--}}
+                {{--                                <option value="{{$personnel->name}}">{{$personnel->name}}</option>--}}
+                {{--                            @endforeach--}}
+                {{--                        </select>--}}
+                {{--                        <x-input-error :messages="$errors->get('logged_for')" class="mt-2" />--}}
+                {{--                    </div>--}}
+                {{--                @endif--}}
 
                 <div class="mt-4">
                     <x-input-label for="impacted_item" :value="__('Impacted Item')" />
-                    <x-text-input id="impacted_item" class="block mt-1 w-full" type="text" name="impacted_item" :value="old('impacted_item')" required />
+                    <x-text-input id="impacted_item" class="block mt-1 w-full" type="text" name="impacted_item" :value="$incident->impacted_item" required />
                     <x-input-error :messages="$errors->get('impacted_item')" class="mt-2" />
                 </div>
 
@@ -82,13 +82,13 @@
                 <!-- Description (Text Area) -->
                 <div class="mt-4">
                     <x-input-label for="short_description" :value="__('Short Description')" />
-                    <x-text-input id="short_description" class="block mt-1 w-full" type="text" name="short_description" :value="old('short_description')" required />
+                    <x-text-input id="short_description" class="block mt-1 w-full" type="text" name="short_description" :value="$incident->short_description" required />
                     <x-input-error :messages="$errors->get('short_description')" class="mt-2" />
                 </div>
 
                 <div class="mt-4">
                     <x-input-label for="description" :value="__('Description')" />
-                    <textarea id="description" name="description" class="block mt-1 w-full" rows="4" required>{{ old('description') }}</textarea>
+                    <textarea id="description" name="description" class="block mt-1 w-full" rows="4" required>{{ $incident->description }}</textarea>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 
