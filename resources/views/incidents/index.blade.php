@@ -1,14 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Incident Requests') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12 px-3">
-        <div class="w-full mx-auto sm:px-6 lg:px-0">
-        <div class="relative overflow-x-auto">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <div class="w-max bg-white py-12 px-3 overflow-hidden">
+        <div class="mx-auto sm:px-6 lg:px-0">
+            <div class="relative overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-black uppercase bg-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">Number</th>
@@ -20,6 +14,7 @@
                     <th scope="col" class="px-6 py-3">Category</th>
                     <th scope="col" class="px-6 py-3">Priority</th>
                     <th scope="col" class="px-6 py-3">Short Description</th>
+                    <th scope="col" class="px-6 py-3">Description</th>
                     <th scope="col" class="px-6 py-3">Incident State</th>
                     <th scope="col" class="px-6 py-3">Action</th>
                     @if(Auth::user()->role === 1)
@@ -42,7 +37,7 @@
                         <td class="px-1 py-2">{{ $incident->category }}</td>
                         <td class="px-1 py-2">{{ $incident->priority }}</td>
                         <td class="px-1 py-2">{{ $incident->short_description }}</td>
-{{--                        <td class="px-1 py-2 text-clip w-96">{{ $incident->description }}</td>--}}
+                        <td class="px-1 py-2 text-clip w-96">{{ $incident->description }}</td>
                         <td class="px-1 py-2">{{ $incident->incident_state }}</td>
                         <td class=" space-y-2">
                             <form action="{{route('incidents.show', ['incident' => $incident->id])}}" method="get">

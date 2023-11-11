@@ -35,8 +35,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('/incidents', IncidentRequestController::class);
     Route::post('incidents/{incident}', [IncidentRequestController::class, 'assign'])->name('incidents.assign');
     Route::patch('incidents/status/{incident}', [IncidentRequestController::class, 'status'])->name('incidents.status');
-    Route::get('/add-user', [\App\Http\Controllers\AdminController::class, 'index'])->name('adduser.index');
-    Route::post('/add-user', [\App\Http\Controllers\AdminController::class, 'adduser'])->name('adduser.create');
+    Route::controller(\App\Http\Controllers\AdminController::class)->group(function (){
+        Route::get('/add-user','index')->name('adduser.index');
+        Route::post('/add-user','adduser')->name('adduser.create');
+        Route::get('/users','allUsers')->name('users');
+        Route::get('/report', 'incidentsReport')->name('report');
+        Route::get('/generate-pdf', 'generatePDF')->name('generate-pdf');
+        Route::get('/generate-excel', 'generateExcel')->name('generate-excel');
+    });
 });
 
 require __DIR__.'/auth.php';

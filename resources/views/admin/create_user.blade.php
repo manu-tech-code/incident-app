@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 h-screen" style="background: url(http://localhost:8000/images/ecg.jpg) no-repeat;background-size: cover">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 lg:w-3/12">
     <form method="POST" action="{{ route('adduser.create') }}">
         @csrf

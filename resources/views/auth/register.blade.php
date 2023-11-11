@@ -19,7 +19,7 @@
         <!-- Role -->
         <div class="mt-4">
             <x-input-label for="role" :value="__('Role')"/>
-            <select  name="role" class="block mt-1 w-full" >
+            <select  name="role" class="text-black block mt-1 w-full" >
                 <option selected disabled>Select Role</option>
                 <option value="1">1 - Admin</option>
                 <option value="2">2 - IT Personnel</option>
