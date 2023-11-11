@@ -27,7 +27,7 @@ class IncidentRequestFactory extends Factory
             'priority' => fake()->randomElement(['High', 'Medium', 'Low']),
             'short_description' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'incident_state' => fake()->randomElement(['Pending', 'In Progress', 'Done']),
+            'incident_state' => fake()->randomElement(['Pending', 'Work In Progress', 'Resolved']),
             'user_id' => fake()->randomNumber(1,1),
             'it_personnel_id' => fake()->randomNumber(1,1),
         ];

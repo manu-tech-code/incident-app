@@ -51,7 +51,7 @@
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-nav-link>
-                @if(Auth::user()->role === 1)
+
                     <x-nav-link :href="route('adduser.create')" :active="request()->routeIs('adduser.index')">
                         {{ __('Add User') }}
                     </x-nav-link>
@@ -64,17 +64,17 @@
                         {{ __('All Incidents') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('adduser.create')" :active="request()->routeIs('adduser.index')">
-                        {{ __('Post') }}
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                        {{ __('Posts') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('report')" :active="request()->routeIs('report')">
                         {{ __('Report') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
-                        {{ __('All Users') }}
-                    </x-nav-link>
-                @endif
+{{--                    <x-nav-link :href="route('users')" :active="request()->routeIs('users')">--}}
+{{--                        {{ __('All Users') }}--}}
+{{--                    </x-nav-link>--}}
+
             </div>
 
             <!-- Hamburger -->

@@ -31,8 +31,8 @@
                                @method('PATCH')
                                <button class="rounded-md p-3 text-white @if($incident->incident_state === 'Pending')bg-orange-600 @else bg-green-600 @endif" type="submit">
                                    @if($incident->incident_state === 'Pending')
-                                       Set as In progress
-                                   @elseif($incident->incident_state === 'In Progress')
+                                       Set as Work In Progress
+                                   @elseif($incident->incident_state === 'Work In Progress')
                                        Set as Resolved
                                    @endif
                                </button>

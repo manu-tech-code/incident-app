@@ -19,14 +19,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/dashboard', function () {
-    $users = User::all();
-    $admin = User::whereRole(1)->get();
-    $personnel = User::whereRole(2)->get();
-    $employees = User::whereRole(3)->get();
-    $requests = \App\Models\IncidentRequest::all();
-    return view('dashboard', compact('users', 'personnel', 'employees', 'requests','admin'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -43,6 +36,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/generate-pdf', 'generatePDF')->name('generate-pdf');
         Route::get('/generate-excel', 'generateExcel')->name('generate-excel');
     });
+    Route::resource('/posts', \App\Http\Controllers\PostController::class);
 });
 
 require __DIR__.'/auth.php';

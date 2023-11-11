@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\IncidentRequest;
 use App\Models\User;
+use Database\Factories\PostFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
     {
          User::factory(10)->create();
          IncidentRequest::factory(10)->create();
+         PostFactory::factory(10)->create();
     }
 }

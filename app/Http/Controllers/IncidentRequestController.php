@@ -109,9 +109,9 @@ class IncidentRequestController extends Controller
     {
         $status = '';
         if ($incident->incident_state === 'Pending') {
-            $status = 'In Progress';
+            $status = 'Work In Progress';
         }
-        elseif ($incident->incident_state === 'In Progress'){
+        elseif ($incident->incident_state === 'Work In Progress'){
             $status = 'Resolved';
         }
         else {

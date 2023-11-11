@@ -1,8 +1,8 @@
 <x-app-layout>
-    <div class="w-max bg-white py-12 px-3 overflow-hidden">
+    <div class="bg-gray-200 py-12 px-3 overflow-x-auto">
         <div class="mx-auto sm:px-6 lg:px-0">
-            <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <div class="relative overflow-x-auto overflow-hidden">
+                <table class="text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-black uppercase bg-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">Number</th>
@@ -62,8 +62,8 @@
                                     @method('PATCH')
                                     <button class="rounded-md p-3 text-white @if($incident->incident_state === 'Pending')bg-orange-600 @else bg-green-600 @endif" type="submit">
                                         @if($incident->incident_state === 'Pending')
-                                            Set as In progress
-                                        @elseif($incident->incident_state === 'In Progress')
+                                            Set as Work In Progress
+                                        @elseif($incident->incident_state === 'Work In Progress')
                                             Set as Resolved
                                         @endif
                                     </button>
