@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/incidents', IncidentRequestController::class);
     Route::post('incidents/{incident}', [IncidentRequestController::class, 'assign'])->name('incidents.assign');
     Route::patch('incidents/status/{incident}', [IncidentRequestController::class, 'status'])->name('incidents.status');
-    Route::patch('incidents/status/{incident}', [IncidentRequestController::class, 'addRemarks'])->name('incidents.remarks');
+    Route::patch('incidents/remarks/{incident}', [IncidentRequestController::class, 'addRemarks'])->name('incidents.remarks');
     Route::controller(\App\Http\Controllers\AdminController::class)->group(function (){
         Route::get('/add-user','index')->name('adduser.index');
         Route::post('/add-user','adduser')->name('adduser.create');
