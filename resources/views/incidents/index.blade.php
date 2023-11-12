@@ -77,7 +77,7 @@
                                     <form action="{{route('incidents.status', ['incident' => $incident->id])}}" method="post">
                                         @csrf
                                         @method('PATCH')
-                                        <button class="rounded-md p-3 text-white @if($incident->incident_state === 'Pending') bg-orange-600 @else bg-green-600 @endif" type="submit">
+                                        <button class="rounded-md p-3 text-white w-fit @if($incident->incident_state === 'Pending') bg-orange-600 @else bg-green-600 @endif" type="submit">
                                             @if($incident->incident_state === 'Pending')
                                                 Set as Work In Progress
                                             @elseif($incident->incident_state === 'Work In Progress')

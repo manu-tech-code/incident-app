@@ -1,12 +1,16 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Details') }}
-        </h2>
-    </x-slot>
 
     <div class="py-12">
         <div class="x-auto sm:px-6 lg:px-8 dark:text-gray-300">
+            <div class="mb-4">
+                <a href="{{ route('incidents.index') }}" class="text-gray-600 hover:text-gray-900">
+                    <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Back
+                </a></div>
             <div class="dark:bg-gray-800 bg-white shadow-md rounded-lg p-4 mx-auto">
                 <div class="dark:text-gray-300 space-y-3">
                   <div class="flex flex-col space-y-7 capitalize">
