@@ -33,6 +33,7 @@ class AdminController extends Controller
         $mobileDevice = count(IncidentRequest::whereCategory('Mobile Device')->get());
         $meetingRoom = count(IncidentRequest::whereCategory('Meeting Room')->get());
         $infrastructure = count(IncidentRequest::whereCategory('Infrastructure')->get());
+        $remarks = IncidentRequest::whereIncidentState('Resolved')->whereNotNull('remarks')->limit(5)->latest()->get();
 //
         return view('dashboard', compact(
             'users',
@@ -47,7 +48,8 @@ class AdminController extends Controller
             'hardware',
             'mobileDevice',
             'meetingRoom',
-            'infrastructure'
+            'infrastructure',
+            'remarks',
         ));
     }
     public function adduser(Request $request): RedirectResponse

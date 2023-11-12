@@ -120,4 +120,10 @@ class IncidentRequestController extends Controller
         $incident->update(['incident_state' => $status]);
         return redirect()->route('incidents.index');
     }
+
+    public function addRemarks(Request $request,IncidentRequest $incident)
+    {
+        $incident->update(['remarks' => $request->remarks]);
+        return redirect()->route('incidents.index');
+    }
 }

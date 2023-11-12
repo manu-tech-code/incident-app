@@ -28,6 +28,7 @@ class IncidentRequestExport implements FromCollection, WithHeadings
                 'DESCRIPTION' => $incident->description,
                 'INCIDENT STATE' => $incident->incident_state,
                 'ASSIGNED TO' => $incident->it_personnel_id ? \App\Models\User::whereId($incident->it_personnel_id)->value('name'): 'Not Assigned',
+                'REMARKS' => $incident->remarks
             ];
         });
     }
@@ -39,6 +40,6 @@ class IncidentRequestExport implements FromCollection, WithHeadings
      */
     public function headings(): array
     {
-        return ['NUMBER', 'CALLER',	'OPENED', 'OPENED BY', 'LOCATION', 'IMPACTED ITEM',	'CATEGORY',	'PRIORITY',	'SHORT DESCRIPTION', 'DESCRIPTION',	'INCIDENT STATE', 'ASSIGNED  TO'];
+        return ['NUMBER', 'CALLER',	'OPENED', 'OPENED BY', 'LOCATION', 'IMPACTED ITEM',	'CATEGORY',	'PRIORITY',	'SHORT DESCRIPTION', 'DESCRIPTION',	'INCIDENT STATE', 'ASSIGNED  TO', 'REMARKS'];
     }
 }

@@ -22,7 +22,8 @@ class IncidentRequest extends Model
         'short_description',
         'description',
         'it_personnel_id',
-        'incident_state'
+        'incident_state',
+        'remarks'
     ];
 
     public function user(): BelongsTo

@@ -59,7 +59,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button class="ml-4">
+            <x-primary-button class="ml-4 bg-blue-600 hover:bg-blue-800 transition-all ease-in-out duration-300">
                 {{ __('Add User') }}
             </x-primary-button>
         </div>
