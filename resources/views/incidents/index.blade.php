@@ -1,12 +1,7 @@
-<style>
-    .text-wrap {
-        text-wrap: normal;
-    }
-</style>
 <x-app-layout>
     <div class="bg-gray-300 py-12 px-3 overflow-x-auto">
         <div class="mx-auto sm:px-6 lg:px-0">
-            <div class="relative overflow-x-auto overflow-hidden @if(Auth::user()->role === 1) w-[calc(100%-15rem)] @else w-full @endif h-screen float-right">
+            <div class="relative overflow-x-auto @if(Auth::user()->role === 1) w-[calc(100%-15rem)] @else w-full @endif h-screen float-right">
                 <table class="text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-black uppercase bg-gray-400">
                 <tr>

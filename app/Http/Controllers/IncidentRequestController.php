@@ -21,6 +21,7 @@ class IncidentRequestController extends Controller
         $personnel = User::whereRole(2)->get();
         if (Auth::user()->role === 1){
             $incidents = IncidentRequest::with('user')->get();
+//            dd(count($incidents));
         }
         elseif (Auth::user()->role === 2){
             $incidents = IncidentRequest::whereItPersonnelId(Auth::id())->get();
